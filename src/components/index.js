@@ -1,3 +1,6 @@
 export { default as Header } from "./Header"
 export { default as Footer } from "./Footer"
 export { default as ProfileHead } from "./ProfileHead"
+export { default as ProfileBody } from "./ProfileBody"
+export { default as BusinessInfo } from "./BusinessInfo"
+export { default as ProductCard } from "./ProductCard"

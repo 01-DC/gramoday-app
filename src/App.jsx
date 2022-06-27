@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react"
 
-import { Header, Footer, ProfileHead } from "./components"
+import { Header, Footer, ProfileHead, ProfileBody } from "./components"
 
 function App() {
 	const [data, setData] = useState(null)
@@ -12,7 +12,7 @@ function App() {
 
 		const resJson = await res.json()
 		setData(resJson)
-		// console.log(data)
+		console.log(data)
 	}
 
 	useEffect(() => {
@@ -20,10 +20,11 @@ function App() {
 	}, [])
 
 	return (
-		<div className="w-full h-screen">
+		<div className="w-full">
 			<Header />
 			<div className="max-w-3xl mx-auto">
-				<ProfileHead />
+				<ProfileHead data={data} />
+				<ProfileBody />
 			</div>
 			<Footer />
 		</div>
