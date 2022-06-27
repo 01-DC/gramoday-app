@@ -1,8 +1,9 @@
 import React from "react"
+import { Link } from "react-router-dom"
 
 import { ProductCard } from "."
 
-export default function BusinessInfo({ data }) {
+export default function BusinessInfo({ data, setProduct }) {
 	return (
 		<div className="h-[650px] overflow-auto">
 			<div className="mt-2.5 ml-5">
@@ -36,7 +37,12 @@ export default function BusinessInfo({ data }) {
 			<div>
 				{data.products.map((product, index) => {
 					return (
-						<ProductCard key={index} product={product} />
+						<Link
+							key={index}
+							to="/details"
+							onClick={() => setProduct(product)}>
+							<ProductCard product={product} />
+						</Link>
 					)
 				})}
 			</div>

@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react"
+import { Routes, Route } from "react-router-dom"
 
-import { Header, Footer, ProfileHead, ProfileBody } from "./components"
+import { Header, Footer, ProfileHead, ProfileBody, ProductDetails } from "./components"
 
 function App() {
 	const [data, setData] = useState(null)
+	const [selectedProduct, setSelectedProduct] = useState(null)
 
 	async function getData() {
 		const res = await fetch(
@@ -23,10 +25,20 @@ function App() {
 
 	return (
 		<div className="w-full">
-			<Header />
+			<Header selectedProduct={selectedProduct} />
 			<div className="max-w-3xl mx-auto">
-				<ProfileHead data={data} />
-				<ProfileBody data={data} />
+				<Routes>
+					<Route
+						path="/"
+						element={
+							<>
+								<ProfileHead data={data} />
+								<ProfileBody data={data} setProduct={setSelectedProduct} />
+							</>
+						}
+					/>
+					<Route path="/details" element={<ProductDetails selectedProduct={selectedProduct} />} />
+				</Routes>
 			</div>
 			<Footer />
 		</div>
