@@ -2,29 +2,29 @@ import React from "react"
 
 import { ProductCard } from "."
 
-export default function BusinessInfo() {
+export default function BusinessInfo({ data }) {
 	return (
 		<div className="h-[650px] overflow-auto">
 			<div className="mt-2.5 ml-5">
 				<h4 className="font-bold text-lg text-emerald-500 mb-5">
-					Commission Agent
+					{data.business.userOption}
 				</h4>
 				<p className="ml-2.5 mb-7.5 text-sm">
 					Market Name
 					<span className="font-bold text-base ml-3">
-						Yeshwanthapura Mandi
+						{data.business.marketStdName}
 					</span>
 				</p>
 				<p className="ml-2.5 mb-7.5 text-sm">
 					Firm Name
 					<span className="font-bold text-base ml-7.5">
-						Yeshwanthapura Mandi
+						{data.business.firmName}
 					</span>
 				</p>
 				<p className="ml-2.5 mb-7.5 text-sm">
 					Shop Number
 					<span className="font-bold text-base ml-3">
-						Yeshwanthapura Mandi
+						{data.business.mandiShopnum}
 					</span>
 				</p>
 			</div>
@@ -34,9 +34,11 @@ export default function BusinessInfo() {
 			</div>
 
 			<div>
-				<ProductCard />
-				<ProductCard />
-				<ProductCard />
+				{data.products.map((product, index) => {
+					return (
+						<ProductCard key={index} product={product} />
+					)
+				})}
 			</div>
 		</div>
 	)

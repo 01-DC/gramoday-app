@@ -19,12 +19,14 @@ function App() {
 		getData()
 	}, [])
 
+	if (data === null) return <div></div>
+
 	return (
 		<div className="w-full">
 			<Header />
 			<div className="max-w-3xl mx-auto">
 				<ProfileHead data={data} />
-				<ProfileBody />
+				<ProfileBody data={data} />
 			</div>
 			<Footer />
 		</div>

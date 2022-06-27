@@ -4,29 +4,56 @@ import { FaWhatsapp } from "react-icons/fa"
 import { MdSend } from "react-icons/md"
 import { BsThreeDotsVertical } from "react-icons/bs"
 
-export default function ProductCard() {
+export default function ProductCard({ product }) {
 	return (
 		<div className="shadow-xl rounded-xl p-2.5 m-1.5">
 			<div className="flex gap-2 mb-2.5">
 				<div className="border border-gray-500">
 					<img
-						src="/src/assets/605d761693c86f0017bfddfa.jpg"
+						src={`/src/assets/${product.picUrl}.jpg`}
 						alt="potato"
 						className="object-cover h-24 w-24"
 					/>
 				</div>
 				<div className="flex-1">
 					<div className="mb-2.5 flex justify-between items-center">
-						<p className="font-medium">Potato Mandi Rates</p>
+						<p className="font-medium">
+							{product.cmdtyStdName} {product.posts[0].marketType}{" "}
+							Rates
+						</p>
 						<BsThreeDotsVertical />
 					</div>
 					<p className="text-xs">
-						Yeshwanthapura Mandi, Bangalore, KA
+						{product.posts[0].marketStdName},{" "}
+						{product.posts[0].loclevel3Name},{" "}
+						{product.posts[0].loclevel2ShortName}
 					</p>
-					<p className="text-xs mb-2.5">25/06/2022</p>
+					<p className="text-xs mb-2.5">
+						{new Date(
+							product.posts[0].updatedAt
+						).toLocaleDateString()}
+					</p>
 					<div className="mb-2.5 flex justify-between items-end w-full">
-						<p className="font-medium text-sm">20 - 21 / 1 Kg</p>
-						<p className="text-xxs italic">Updated at 6:16pm</p>
+						<p className="font-medium text-sm">
+							{
+								product.posts[0].computed
+									.highestAvgPriceVarietyGrade.minPrice
+							}
+							{" - "}
+							{
+								product.posts[0].computed
+									.highestAvgPriceVarietyGrade.maxPrice
+							}
+							{" / "}
+							{product.posts[0].rawPriceConvFctr}{" "}
+							{product.posts[0].rawReportPriceUnit}
+						</p>
+						<p className="text-xxs italic">
+							Updated at{" "}
+							{new Date(
+								product.posts[0].updatedAt
+							).toLocaleTimeString()}
+						</p>
 					</div>
 				</div>
 			</div>

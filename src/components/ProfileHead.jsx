@@ -12,12 +12,9 @@ export default function ProfileHead({ data }) {
 					<FaUserCircle />
 				</div>
 				<div>
-					<p className="font-bold text-lg mb-2.5">
-						{!!data && data.name}
-					</p>
+					<p className="font-bold text-lg mb-2.5">{data.name}</p>
 					<p className="text-sm mb-2.5">
-						{!!data && data.loclevel3Name},{" "}
-						{!!data && data.loclevel2Name}
+						{data.loclevel3Name}, {data.loclevel2Name}
 					</p>
 					<p className="text-xs italic mb-5">Speaks English</p>
 					<div className="flex gap-2">

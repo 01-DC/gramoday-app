@@ -2,7 +2,7 @@ import React, { useState } from "react"
 
 import { BusinessInfo } from "."
 
-export default function ProfileBody() {
+export default function ProfileBody({ data }) {
 	const [activeTab, setActiveTab] = useState(1)
 	return (
 		<div>
@@ -22,7 +22,7 @@ export default function ProfileBody() {
 					REVIEW
 				</button>
 			</div>
-			{activeTab == 1 ? <BusinessInfo /> : <div></div>}
+			{activeTab == 1 ? <BusinessInfo data={data} /> : <div></div>}
 		</div>
 	)
 }
