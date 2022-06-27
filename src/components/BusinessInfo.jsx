@@ -5,7 +5,7 @@ import { ProductCard } from "."
 
 export default function BusinessInfo({ data, setProduct }) {
 	return (
-		<div className="h-[650px] overflow-auto">
+		<div className="h-[67vh] overflow-auto">
 			<div className="mt-2.5 ml-5">
 				<h4 className="font-bold text-lg text-emerald-500 mb-5">
 					{data.business.userOption}
